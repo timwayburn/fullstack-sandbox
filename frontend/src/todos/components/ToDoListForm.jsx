@@ -13,6 +13,7 @@ import arrayMutators from 'final-form-arrays'
 import {FieldArray} from 'react-final-form-arrays'
 import {RegularTextField} from '../../shared/FormFields'
 import {required} from '../../shared/FormValidators'
+import AutoSave from '../AutoSave'
 
 const styles = (theme) => ({
   todoLine: {
@@ -32,6 +33,11 @@ const styles = (theme) => ({
   }
 })
 
+const save = async values => {
+  console.log('Saving', values)
+
+}
+
 export const ToDoListForm = compose(
   withStyles(styles),
   branch(
@@ -48,7 +54,7 @@ export const ToDoListForm = compose(
         {toDoList.title}
       </Typography>
       <Form
-        onSubmit={saveToDoList}
+        onSubmit={save}
         initialValues={{id: toDoList.id, todos: toDoList.todos}}
         mutators={{
           ...arrayMutators
@@ -63,6 +69,7 @@ export const ToDoListForm = compose(
             onSubmit={handleSubmit}
             className={classes.form}
           >
+          <AutoSave debounce={1000} save={save}/>
             <FieldArray name='todos'>
               {({fields}) =>
                 fields.map((name, index) => <div
@@ -103,7 +110,7 @@ export const ToDoListForm = compose(
               <Button
                 type='submit'
                 variant='raised'
-                color='primary'
+                color='primary'>
               >
                 Save
               </Button>

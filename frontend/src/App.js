@@ -9,7 +9,7 @@ const MainAppBar = () => {
   return <AppBar position='static' color='primary'>
     <Toolbar>
       <Typography variant='title' color='inherit'>
-        Things to do
+        Things to do - Tim Wayburn Remix
       </Typography>
     </Toolbar>
   </AppBar>
