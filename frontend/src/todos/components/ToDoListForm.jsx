@@ -110,7 +110,7 @@ export const ToDoListForm = compose(
               <Button
                 type='submit'
                 variant='raised'
-                color='primary'>
+                color='primary'
               >
                 Save
               </Button>
